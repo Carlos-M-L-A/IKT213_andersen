@@ -1,0 +1,4 @@
+opencv
+numpy
+pathlib
+__pycache__/
