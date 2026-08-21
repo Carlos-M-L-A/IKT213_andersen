@@ -1,17 +1,20 @@
-import pathlib, cv2
+import pathlib
+import cv2
+
 
 def print_image_information(image: pathlib.Path):
-    img_info = cv2.imread(image, cv2.IMREAD_COLOR)
+    img_info = cv2.imread(image, cv2.IMREAD_UNCHANGED)
     if img_info is None:
-        print(f"Failed to load image: {image}")
+        print(f"Failed to load image in location: {image}")
         return
 
-    cv2.namedWindows('image', cv2.WINDOW_NORMAL)
-    cv2.imshow('image', img_info)
-    height, width = img_info.shape
-    print(f"Image: {image}")
+    height, width, channels = img_info.shape
     print(f"Height: {width}, Height: {height}")
+    print(f'Channels = {channels}')
+    print(f'Size: {img_info.size}')
+    print(f'Data type {img_info.dtype}')
 
+    cv2.imshow('image', img_info)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 
