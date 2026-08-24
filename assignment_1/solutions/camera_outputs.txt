@@ -1,0 +1,3 @@
+Framerate: 30.0
+Frame width: 640
+Frame height: 480
