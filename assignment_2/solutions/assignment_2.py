@@ -3,8 +3,9 @@ import numpy as np
 import cv2
 
 def print_and_save(title, image_to_save):
+    source_path = path.Path(__file__).parent
     cv2.imshow(title, image_to_save)
-    cv2.imwrite(title, image_to_save)
+    cv2.imwrite(source_path / title, image_to_save)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 
@@ -22,7 +23,7 @@ def crop(image, x_0: int, x_1: int, y_0: int, y_1: int):
 
 def resize(image, width: int, height: int):
     rows, cols, channels = image.shape
-    resized_image = cv2.resize(image, (rows + width, cols + height), interpolation=cv2.INTER_CUBIC)
+    resized_image = cv2.resize(image, (cols + width, rows + height), interpolation=cv2.INTER_CUBIC)
 
     print_and_save('resize.jpg', resized_image)
 
