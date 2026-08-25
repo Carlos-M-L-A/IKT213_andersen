@@ -44,7 +44,7 @@ def hsv(image):
 
 def hue_shifted(image, emptyPictureArray, hue: np.uint8):
     #When a color value goes beyond 255 or bellow 0 it will overflow to either 0 or 255 respectivelly
-    emptyPictureArray[:] = image + 50
+    emptyPictureArray[:] = image + hue
 
     print_and_save('hue_shift.jpg', emptyPictureArray)
 
@@ -71,6 +71,6 @@ if __name__ == '__main__':
     copy(image, emptyPictureArray)
     grayscale(image)
     hsv(image)
-    hue_shifted(image, emptyPictureArray, 50)
+    hue_shifted(image, emptyPictureArray, np.uint8(50))
     smoothing(image)
     rotation(image, cv2.ROTATE_90_CLOCKWISE)
