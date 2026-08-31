@@ -10,8 +10,7 @@ def print_and_save(title, image_to_save):
     cv2.destroyAllWindows()
 
 def padding(image, border_width: int):
-    BLACK = [255,255,255]
-    image_w_borders = cv2.copyMakeBorder(image, border_width, border_width, border_width, border_width, cv2.BORDER_CONSTANT, value=BLACK)
+    image_w_borders = cv2.copyMakeBorder(image, border_width, border_width, border_width, border_width, cv2.BORDER_REFLECT)
 
     print_and_save('padding.jpg', image_w_borders)
 
@@ -22,8 +21,7 @@ def crop(image, x_0: int, x_1: int, y_0: int, y_1: int):
     print_and_save('crop.jpg', cropped_image)
 
 def resize(image, width: int, height: int):
-    rows, cols, channels = image.shape
-    resized_image = cv2.resize(image, (cols + width, rows + height), interpolation=cv2.INTER_CUBIC)
+    resized_image = cv2.resize(image, (width,height), interpolation=cv2.INTER_CUBIC)
 
     print_and_save('resize.jpg', resized_image)
 
